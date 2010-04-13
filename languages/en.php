@@ -19,15 +19,16 @@
 		 'csseditor:ownstyle' => "Overwrite existing CSS classes and ids",
 		 'csseditor:activate' => "Activate",
 		 'csseditor:tileimage' => "Tile image",
-		 'csseditor:transparentback' => "Make the header background transparent. This will ensure no background images appear and the page background displays instead. Warning - selecting this option will render any other header changes useless",
-		 'csseditor:activatemessage' => "If you do not want your custom style to display, select 'no' below.",
+		 'csseditor:transparentback' => "Make the header background transparent. This will ensure no background images appear and the page background displays instead. Warning - selecting this option will nullify any other header image options",
+		 'csseditor:activatemessage' => "If you do not want your custom css to display at this time select 'no' below.",
+		 'csseditor:save' => "Apply changes",
 		 'item:object:csseditor' => "Custom CSS themes created",
 
 		 'customlogo' => "Upload site logo",
 	
-		 'customlogo:blurb' => "You can upload a custom logo for your site here, which will be resized.",
+		 'customlogo:blurb' => "You can upload a custom logo for your site here.<br />(Images larger than 300 x 60px will be scaled down).",
 	
-		 'customlogo:file' => "Graphic to upload (by default will be resized to 200x70)",
+		 'customlogo:file' => "Upload your site logo",
 		 'customlogo:delete' => 'Click here to remove your logo',
 	
 		 'customlogo:success' => 'Your logo was successfully uploaded.',

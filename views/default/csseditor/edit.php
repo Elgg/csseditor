@@ -28,8 +28,8 @@
 	 
 
 ?>
-<link rel="stylesheet" media="screen" type="text/css" href="<?php echo $vars['url']; ?>mod/multiadmin/vendors/css/colorpicker.css" />
-<script type="text/javascript" src="<?php echo $vars['url']; ?>mod/multiadmin/vendors/js/colorpicker.js"></script>
+<link rel="stylesheet" media="screen" type="text/css" href="<?php echo $vars['url']; ?>mod/csseditor/vendors/css/colorpicker.css" />
+<script type="text/javascript" src="<?php echo $vars['url']; ?>mod/csseditor/vendors/js/colorpicker.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('#background').ColorPicker({
@@ -79,8 +79,8 @@ $(function(){
 });
 </script>
 
-<div class="contentWrapper user_settings">
-<p><?php echo elgg_echo('csseditor:warning'); ?></p>
+<div class="admin_settings csseditor">
+<p class="margin_top"><?php echo elgg_echo('csseditor:warning'); ?></p>
 <?php
 
 	$form_body = "<h3>" . elgg_echo('csseditor:pagebackground') . "</h3>";
@@ -91,7 +91,7 @@ $(function(){
 	$form_body .= "<p>" . elgg_echo('csseditor:tileimage') . ": <br />" . elgg_view('input/radio', array(
 															'internalname' => "background_repeat",
 															'value' => $background_repeat,
-															'options' => array('yes', 'no')
+															'options' => array('Yes', 'No')
 															)) . "</p>";
 	$form_body .= "<h3>" . elgg_echo('csseditor:headerbackground') . "</h3>";
 	$form_body .= "<p>" . elgg_echo('csseditor:backgroundcolor') . ":";
@@ -101,13 +101,13 @@ $(function(){
 	$form_body .= "<p>" . elgg_echo('csseditor:tileimage') . ": <br />" . elgg_view('input/radio', array(
 															'internalname' => "header_repeat",
 															'value' => $header_repeat,
-															'options' => array('yes', 'no')
+															'options' => array('Yes', 'No')
 															)) . "</p>";
-	$form_body .= "<p>" . elgg_echo('csseditor:transparentback') . ":";
+	$form_body .= "<p>" . elgg_echo('csseditor:transparentback') . ": ";
 	$form_body .= elgg_view('input/checkboxes', array(
 															'internalname' => "header_transparent",
 															'value' => $header_transparent,
-															'options' => array('yes')
+															'options' => array('Yes')
 															)) . "</p>";
 	$form_body .= "<h3>" . elgg_echo('csseditor:headers') . "</h3>";
 	$form_body .= "<p>" . elgg_view('input/text', array('internalname' => 'headers', 'value' => $headers, 'js' => 'id="headers"')) . "</p>";
@@ -116,18 +116,20 @@ $(function(){
 	$form_body .= "<h3>" . elgg_echo('csseditor:paragraph') . "</h3>";
 	$form_body .= "<p>" . elgg_view('input/text', array('internalname' => 'paragraph', 'value' => $paragraph, 'js' => 'id="paragraph"')) . "</p>";
 	$form_body .= "<h3>" . elgg_echo('csseditor:ownstyle') . "</h3>";
-	$form_body .= "<p>" . elgg_view('input/plaintext', array('internalname' => 'extra', 'value' => $extra)) . "</p>";
+	$form_body .= "<p>" . elgg_view('input/plaintext', array('internalname' => 'extra', 'value' => $extra, 'class' => 'input_textarea csseditor')) . "</p>";
 	$form_body .= "<h3>" . elgg_echo('csseditor:activate') . "</h3>";
-	$form_body .= "<p>" . elgg_echo('csseditor:activatemessage');
+	$form_body .= "<p>" . elgg_echo('csseditor:activatemessage') . "<br />";
 	$form_body .= elgg_view("input/pulldown",array(
 															'internalname' => "turnon",
 															'value' => $turnon,
-															'options' => array('no', 'yes')
+															'options' => array('No', 'Yes'),
+															'class' => "margin_top"
 															)) . "</p>";
        
 	$form_body .= elgg_view('input/securitytoken');
-	$form_body .= elgg_view('input/hidden', array('internalname' => 'guid', 'value' => $guid));   
-	$form_body .= "<br />" . elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('edit')));
+	$form_body .= elgg_view('input/hidden', array('internalname' => 'guid', 'value' => $guid));
+	$form_body .= "<div class='divider'></div>";   
+	$form_body .= elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('csseditor:save')));
 ?>
 
 <?php

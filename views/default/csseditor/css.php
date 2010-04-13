@@ -137,3 +137,14 @@
 	
 	}//close opening if statement
 ?>
+
+
+/* css rules for the plugins admin interface */
+img.custom_logo {
+	max-width: 300px;
+	max-height: 60px;
+}
+.input_textarea.csseditor {
+	font-family:Monaco,"Courier New",Courier,monospace;
+	font-size:13px;
+}
