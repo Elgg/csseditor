@@ -118,13 +118,11 @@ $(function(){
 	$form_body .= "<h3>" . elgg_echo('csseditor:ownstyle') . "</h3>";
 	$form_body .= "<p>" . elgg_view('input/plaintext', array('internalname' => 'extra', 'value' => $extra, 'class' => 'input_textarea csseditor')) . "</p>";
 	$form_body .= "<h3>" . elgg_echo('csseditor:activate') . "</h3>";
-	$form_body .= "<p>" . elgg_echo('csseditor:activatemessage') . "<br />";
-	$form_body .= elgg_view("input/pulldown",array(
-															'internalname' => "turnon",
-															'value' => $turnon,
-															'options' => array('No', 'Yes'),
-															'class' => "margin_top"
-															)) . "</p>";
+	$form_body .= "<p>" . elgg_view("input/pulldown",array(
+								'internalname' => "turnon",
+								'options' => array('No', 'Yes'),
+								'class' => "margin_top"
+								)) . "</p>";
        
 	$form_body .= elgg_view('input/securitytoken');
 	$form_body .= elgg_view('input/hidden', array('internalname' => 'guid', 'value' => $guid));
