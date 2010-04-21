@@ -81,14 +81,14 @@
 		if($header_back){
 			if ($header_back_color_only) {
 ?>
-			#layout_header {
+			#elgg_header {
 				background-color:<?php echo $header_back_color_only ; ?>;
 			}
 <?php
 		}
 		else {
 ?>
-			#layout_header {
+			#elgg_header {
 				background:<?php echo $header_back ; ?>;
 			}
 <?php		
