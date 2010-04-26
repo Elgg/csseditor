@@ -116,7 +116,7 @@ $(function(){
 	$form_body .= "<h3>" . elgg_echo('csseditor:paragraph') . "</h3>";
 	$form_body .= "<p>" . elgg_view('input/text', array('internalname' => 'paragraph', 'value' => $paragraph, 'js' => 'id="paragraph"')) . "</p>";
 	$form_body .= "<h3>" . elgg_echo('csseditor:ownstyle') . "</h3>";
-	$form_body .= "<p>" . elgg_view('input/plaintext', array('internalname' => 'extra', 'value' => $extra, 'class' => 'input_textarea csseditor')) . "</p>";
+	$form_body .= "<p>" . elgg_view('input/plaintext', array('internalname' => 'extra', 'value' => $extra, 'class' => 'input_textarea monospace')) . "</p>";
 	$form_body .= "<h3>" . elgg_echo('csseditor:activate') . "</h3>";
 	$form_body .= elgg_view("input/pulldown",array(
 							'internalname' => "turnon",
