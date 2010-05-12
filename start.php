@@ -12,6 +12,9 @@ function csseditor_init() {
 		
 	// Extend system CSS with our own styles
 	elgg_extend_view('css','csseditor/css');
+	
+	elgg_add_admin_submenu_item('customcss', elgg_echo('csseditor'), 'appearance');
+	elgg_add_admin_submenu_item('customlogo', elgg_echo('customlogo'), 'appearance');
 }
 
 /**
@@ -21,8 +24,8 @@ function csseditor_init() {
 function csseditor_pagesetup() {
 	if (get_context() == 'admin' && isadminloggedin()) {
 		global $CONFIG;
-		add_submenu_item(elgg_echo('csseditor'), $CONFIG->wwwroot . 'pg/csseditor/customcss');
-		add_submenu_item(elgg_echo('customlogo'), $CONFIG->wwwroot . 'pg/csseditor/customlogo');
+		//add_submenu_item(elgg_echo('csseditor'), $CONFIG->wwwroot . 'pg/csseditor/customcss');
+		//add_submenu_item(elgg_echo('customlogo'), $CONFIG->wwwroot . 'pg/csseditor/customlogo');
 	}
 }
 
