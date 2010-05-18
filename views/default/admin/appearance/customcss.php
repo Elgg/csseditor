@@ -78,7 +78,7 @@ $(function(){
 	})
 });
 </script>
-
+<?php echo elgg_view_title(elgg_echo('csseditor')); ?>
 <div class="admin_settings csseditor">
 <p class="margin_top"><?php echo elgg_echo('csseditor:warning'); ?></p>
 <?php
