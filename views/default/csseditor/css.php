@@ -8,7 +8,7 @@
 	 * 
 	 */
 	 
-	$get_custom = get_entities("object", "customcss", 0, "", 1);
+	$get_custom = elgg_get_entities(array('types' => "object", 'subtypes' => "customcss", 'limit' => 1));
 	 
 	if($get_custom){
 	 	foreach($get_custom as $custom){
