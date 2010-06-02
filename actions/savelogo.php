@@ -42,4 +42,4 @@
 		}
 		
 	}
-forward("pg/csseditor/customlogo");
+forward($_SERVER['HTTP_REFERER']);

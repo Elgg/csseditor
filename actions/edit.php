@@ -61,4 +61,4 @@ datalist_set('simplecache_lastupdate', 0);
 system_message(elgg_echo("csseditor:posted"));
 	
 // Forward 
-forward("pg/csseditor/customcss");
+forward($_SERVER['HTTP_REFERER']);
