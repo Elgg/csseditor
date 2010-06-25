@@ -33,6 +33,8 @@
 	
 		 'customlogo:success' => 'Your logo was successfully uploaded.',
 		 'customlogo:failure' => 'Your logo could not be uploaded. Please check it was saved in a valid web image format and try again.',
+
+		 'csseditor:disabled_by_theme' => 'Custom CSS has been disabled by %s.  Visit the <a href="%s">CSS Editor settings page</a> to re-enabled.',
 	
 	);
 					

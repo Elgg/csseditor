@@ -56,9 +56,12 @@ $save = $customcss->save();
 		
 //reboot simple cache
 datalist_set('simplecache_lastupdate', 0);
-   
+
+// remove admin notices
+elgg_delete_admin_notice('csseditor_disabled_by_theme');
+
 // Success message
 system_message(elgg_echo("csseditor:posted"));
-	
+
 // Forward 
 forward($_SERVER['HTTP_REFERER']);

@@ -4,29 +4,18 @@
  **/
   
 function csseditor_init() {
-	// Load system configuration
 	global $CONFIG;
 	
-	// Register a page handler, so we can have nice URLs
-	register_page_handler('csseditor','csseditor_page_handler');
+	register_page_handler('csseditor', 'csseditor_page_handler');
 		
 	// Extend system CSS with our own styles
-	elgg_extend_view('css','csseditor/css');
+	elgg_extend_view('css', 'csseditor/css');
+	
+	// disable (but keep) custom css when enabling a theme
+	register_elgg_event_handler('enable', 'plugin', 'csseditor_disable_plugin_hook');
 	
 	elgg_add_admin_submenu_item('customcss', elgg_echo('csseditor'), 'appearance');
 	elgg_add_admin_submenu_item('customlogo', elgg_echo('customlogo'), 'appearance');
-}
-
-/**
- * Adding the custom css option to the admin menu
- *
- */
-function csseditor_pagesetup() {
-	if (get_context() == 'admin' && isadminloggedin()) {
-		global $CONFIG;
-		//add_submenu_item(elgg_echo('csseditor'), $CONFIG->wwwroot . 'pg/csseditor/customcss');
-		//add_submenu_item(elgg_echo('customlogo'), $CONFIG->wwwroot . 'pg/csseditor/customlogo');
-	}
 }
 
 /**
@@ -58,6 +47,11 @@ function csseditor_page_handler($page) {
 	}
 }
 
+/**
+ * Serves pages for custom logos
+ * 
+ * @param $page
+ */
 function customlogo_page_handler($page) {
 	global $CONFIG;
 	if (!array_key_exists(0, $page)) {
@@ -71,6 +65,34 @@ function customlogo_page_handler($page) {
 		include("{$CONFIG->pluginspath}csseditor/sitelogo.php");
 	}
 	exit;
+}
+
+/**
+ * Detects when enabling a plugin and disables CSS.
+ * Adds an admin notice to let people know to enable it if they want.
+ * 
+ * @param $event
+ * @param $type
+ * @param $params
+ */
+function csseditor_disable_plugin_hook($event, $type, $params) {
+	global $CONFIG;
+	
+	$manifest = $params['manifest'];
+	if (isset($manifest['category']) && in_array('theme', $manifest['category'])) {
+		if ($custom_css_entities = elgg_get_entities(array('types' => "object", 'subtypes' => "customcss", 'limit' => 1))) {
+			if ($custom_css_entities[0]->turnon == 'yes') {
+				$custom_css_entities[0]->turnon = 'no';
+				
+				// include an admin notice
+				$settings_link = $CONFIG->site->url . 'pg/admin/appearance/customcss';
+				$message = sprintf(elgg_echo('csseditor:disabled_by_theme'), $manifest['name'], $settings_link);
+				elgg_add_admin_notice('csseditor_disabled_by_theme', $message);
+			}
+		}
+	}
+	
+	return NULL;
 }
      
 // Make sure the status initialisation function is called on initialisation
