@@ -55,7 +55,8 @@ $customcss->background_repeat = $background_repeat;
 $save = $customcss->save();
 		
 //reboot simple cache
-datalist_set('simplecache_lastupdate', 0);
+elgg_view_regenerate_simplecache();
+//datalist_set('simplecache_lastupdate', 0);
 
 // remove admin notices
 elgg_delete_admin_notice('csseditor_disabled_by_theme');
