@@ -6,8 +6,12 @@
 function csseditor_init() {
 	global $CONFIG;
 	
+	// admin page handler
 	register_page_handler('csseditor', 'csseditor_page_handler');
-		
+	
+	// custom logo page handler
+	register_page_handler('custom_logo', 'csseditor_custom_logo_page_handler');
+	
 	// Extend system CSS with our own styles
 	elgg_extend_view('css', 'csseditor/css');
 	
@@ -25,25 +29,12 @@ function csseditor_init() {
  */
 function csseditor_page_handler($page) {
 	global $CONFIG;
-	if($page[0] == 'customlogo'){
+	if ($page[0] == 'customlogo') {
 		//logo uploader
 		include($CONFIG->pluginspath . "csseditor/customlogo.php");
-	}elseif($page[0] == 'customcss'){
+	} elseif($page[0] == 'customcss') {
 		// css editor
 		include($CONFIG->pluginspath . "csseditor/edit.php");
-	}else{
-	
-		if (!array_key_exists(0, $page)) {
-			exit;
-		}
-		$time = str_replace('.jpg', '', $page[0]);
-		if (empty($time)) {
-			exit;
-		}
-		if ($time == $CONFIG->site->customlogo_time) {
-			include("{$CONFIG->pluginspath}csseditor/sitelogo.php");
-		}
-		exit;
 	}
 }
 
@@ -52,18 +43,23 @@ function csseditor_page_handler($page) {
  * 
  * @param $page
  */
-function customlogo_page_handler($page) {
+function csseditor_custom_logo_page_handler($page) {
 	global $CONFIG;
+	
 	if (!array_key_exists(0, $page)) {
 		exit;
 	}
-	$time = str_replace('.jpg', '', $page[0]);
+	
+	$time = elgg_substr($page[0], 0, -4);
+	
 	if (empty($time)) {
 		exit;
 	}
+	
 	if ($time == $CONFIG->site->customlogo_time) {
 		include("{$CONFIG->pluginspath}csseditor/sitelogo.php");
 	}
+	
 	exit;
 }
 

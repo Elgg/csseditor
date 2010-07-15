@@ -16,6 +16,7 @@ if (!empty($logo)) {
 	header("Content-Length: " . strlen($contents));
 		
 	$split_output = str_split($contents, 1024);
-   	foreach($split_output as $chunk)
+   	foreach($split_output as $chunk) {
        	echo $chunk; 
+   	}
 }
