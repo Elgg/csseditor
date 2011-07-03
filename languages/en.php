@@ -1,9 +1,9 @@
 <?php
+/**
+ * CSS Editor English language file
+ */
 
 $english = array(
-	/**
-	* Appearance
-	*/
 	
 	'csseditor' => "Custom CSS",
 	'csseditor:warning' => "You can use the following form to edit a few of the css elements of your Elgg site. If you are not sure about editing CSS, then we recommend you leave this section alone. ",
@@ -40,4 +40,4 @@ $english = array(
 
 );
 
-add_translation("en",$english);
+add_translation("en", $english);
